@@ -1,6 +1,6 @@
 /* 北投市場蕭太太水餃
-   這個檔案只做五件事：標出今天星期幾、標題逐字落下、捲動到才出現、
-   跟著頁面的選單橫條、照片列的暫停鈕。 */
+   這個檔案只做四件事：標出今天星期幾、標題逐字落下、捲動到才出現、
+   跟著頁面的選單橫條。 */
 
 /* ---------- 營業狀態 ----------
    day：0 是週日、1 是週一……6 是週六。minutes：從半夜零點起算的分鐘數。
@@ -114,14 +114,4 @@ function taipeiNow() {
     if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
   }, { passive: true });
   onScroll();
-
-  /* ---------- 照片列暫停鈕 ---------- */
-  var gallery = $('gal'), control = $('galctl');
-  if (gallery && control) {
-    control.addEventListener('click', function () {
-      var paused = gallery.classList.toggle('is-paused');
-      control.setAttribute('aria-pressed', paused);
-      control.textContent = paused ? '繼續播放' : '暫停照片';
-    });
-  }
 })();
